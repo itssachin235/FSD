@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Tutorial</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f4f6f8;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        background-color: #20232a;
+        color: white;
+        padding: 15px 20px;
+      }
+
+      header img {
+        height: 45px;
+        margin-right: 15px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.6rem;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      th {
+        background-color: #20232a;
+        color: white;
+        text-align: left;
+        padding: 12px 16px;
+      }
+
+      td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e0e0e0;
+        vertical-align: top;
+      }
+
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      .counter-box {
+        display: inline-block;
+        background-color: #61dafb;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        line-height: 28px;
+        margin-right: 8px;
+      }
+
+      .topic-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .topic-detail {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        alt="React Logo"
+      />
+      <h1>React Tutorial</h1>
+    </header>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const topics = [
+        {
+          title: "Introduction to React",
+          detail:
+            "React is a JavaScript library for building user interfaces. It helps you build reusable UI components for scalable applications.",
+        },
+        {
+          title: "Components and Props",
+          detail:
+            "Components are the basic building blocks of a React app. Props (short for properties) let you pass data from parent to child components.",
+        },
+        {
+          title: "State and Lifecycle",
+          detail:
+            "State represents dynamic data in a component. Lifecycle methods or hooks allow you to run code when components mount, update, or unmount.",
+        },
+        {
+          title: "Handling Events",
+          detail:
+            "React provides a clean way to handle user actions such as clicks, inputs, and form submissions using event handlers.",
+        },
+        {
+          title: "Conditional Rendering",
+          detail:
+            "You can render components or elements conditionally in React using simple JavaScript logic like if-else or ternary operators.",
+        },
+        {
+          title: "Lists and Keys",
+          detail:
+            "React can efficiently render lists of data using the map() function. Keys help React identify which items have changed or been removed.",
+        },
+        {
+          title: "Hooks",
+          detail:
+            "Hooks like useState and useEffect allow you to manage state and side effects in functional components without using classes.",
+        },
+        {
+          title: "React Router",
+          detail:
+            "React Router helps manage navigation in a single-page application (SPA) by mapping URLs to components.",
+        },
+      ];
+
+      function App() {
+        return (
+          <div className="container">
+            <h2>Topics</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Topic</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topics.map((topic, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className="counter-box">{index + 1}</div>
+                    </td>
+                    <td className="topic-title">{topic.title}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <h2>Details</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topics.map((topic, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className="counter-box">{index + 1}</div>
+                    </td>
+                    <td className="topic-detail">{topic.detail}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
