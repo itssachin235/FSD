@@ -1,52 +1,28 @@
-import { useState } from "react";
-
-
+import  {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+import Home from './component/Home';
+import About from './component/About';
+import Contact from './component/Contact';
 
 function App() {
-  const topics = [
-    { id: 1, title: "React Basics", description: "Learn about components, JSX, and props." },
-    { id: 2, title: "React State", description: "Understand how state and hooks work in React." },
-    { id: 3, title: "React Events", description: "Handle user input and button clicks." },
-  ];
+   return (
+    <div>
+      <BrowserRouter>
+      <h1>React router Example</h1>
+      <nav style ={{marginButtom:"20px"}}>
+        <Link to="/ style={{margin:10px}}"> Home</Link>
+        <Link to="/About" style={{margin:"10px"}}> About</Link>
+        <Link to="/Contact" style={{margin:"10px"}}> Contact</Link>
+      </nav>
 
-  const [selectedTopic, setSelectedTopic] = useState(null);
-  const [count, setCount] = useState(0);
-
-  const handleSelectTopic = (topic) => {
-    setSelectedTopic(topic);
-    setCount(0);
-  };
-
-  return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>📘 React Tutorial Topics</h1>
-
-      <ul>
-        {topics.map((topic) => (
-          <li key={topic.id} style={{ marginBottom: "10px", cursor: "pointer" }}>
-            <button onClick={() => handleSelectTopic(topic)} style={{ padding: "8px 12px" }}>
-              {topic.title}
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      {selectedTopic && (
-        <div style={{ marginTop: "20px", padding: "15px", border: "1px solid #ccc", borderRadius: "8px" }}>
-          <h2>{selectedTopic.title}</h2>
-          <p>{selectedTopic.description}</p>
-
-          <div style={{ marginTop: "15px" }}>
-            <h3>Counter Example</h3>
-            <p>Count: {count}</p>
-            <button onClick={() => setCount(count + 1)} style={{ marginRight: "10px" }}>➕ Increase</button>
-            <button onClick={() => setCount(count - 1)} style={{ marginRight: "10px" }}>➖ Decrease</button>
-            <button onClick={() => setCount(0)}>🔁 Reset</button>
-          </div>
-        </div>
-      )}
+      <Routes>
+        <Route path="/home"element={<Home/>}/>
+        <Route path="/about"element={<About/>}/>
+        <Route path="/contact"element={<Contact/>}/>
+      </Routes>
+      </BrowserRouter>
     </div>
-  );
+
+);
 }
 
 
